@@ -1,0 +1,35 @@
+Basic inline styling added to HTML component:
+
+<u><i><b>0% APR, $0 monthly payments, and no credit check!</i></b></u>
+
+Javascript ternary operator as a validation rule for zip code 
+
+{{/^\d{5}$/.test(zipPostalCode.value) ? '' : 'Must Be ##### Format'}}
+
+Javascript ternary operator as a validation rule for social security number
+
+{{/^\d{9}$/.test(ssn.value) ? '' : 'Must Be ######### Format'}}
+
+Javascript ternary operator as a validation rule for email
+
+{{/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress.value) ? '' : 'Not A Valid Email Format'}}
+
+Javascript ternary operator as a validation for birthday
+
+{{(new Date().getFullYear() - new Date(dateOfBirth.value).getFullYear() > 18 || 
+    (new Date().getFullYear() - new Date(dateOfBirth.value).getFullYear() === 18 && 
+    new Date().getMonth() >= new Date(dateOfBirth.value).getMonth() && 
+    new Date().getDate() >= new Date(dateOfBirth.value).getDate())) ? '' : 'Must Be At Least 18 Years Of Age'}}
+
+
+The submit button on the form was created to run an API request query, below are the rules I applied to success and failure responses to accomplish sandbox personas: 
+
+Denied application that parses string 'Your application has been denied. Please review your application.' 
+
+{{ metadata.status === 201 && data.summary.outcome === "Denied" }}
+
+Manual Approval application that parses string 'Your application has been flagged for manual approval. Please review your application." 
+
+{{ metadata.status === 201 && data.summary.outcome === "Manual Review" }}
+
+
